@@ -1,0 +1,80 @@
+<div style="overflow-y: auto; max-height: 750px;">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="d-none">
+                <tr>
+                    <th>Label</th>
+                    <th>Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label>Name</label></td>
+                    <td><input [(ngModel)]="details.Name" (change)="details.saveDetails()"></td>
+                </tr>
+                <tr id="groupCountInputRow">
+                    <td><label style="height: 30px;">Group Count</label></td>
+                    <td><input type="number" id="groupCountInput" step="1" min="1" [value]="details.Groups.length"
+                            (change)="adjustGroups($event)"></td>
+                </tr>
+                <tr *ngFor="let group of details.Groups; let i = index">
+                    <td>
+                        <label style="margin-left:25px;">Group {{i + 1}} Label</label>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="group.Name" (change)="details.saveDetails()">
+                    </td>
+                </tr>
+                <tr id="observationCountInputRow">
+                    <td><label style="height: 30px;">Observation Count</label></td>
+                    <td><input type="number" id="observationCountInput" step="1" min="1"
+                            [value]="details.ObservationTypes.length" (change)="adjustObservationTypes($event)"></td>
+                </tr>
+                <ng-container *ngFor="let type of details.ObservationTypes, index as i">
+                    <tr id="observationLabelRow0" class="observationOptionRow observationLabelRow">
+                        <td><label style="margin-left:25px;">Observation {{i+1}} Label</label></td>
+                        <td><input type="text" [(ngModel)]="type.Name" (change)="details.saveDetails()">
+                        </td>
+                    </tr>
+                    <tr id="observationHotkeyRow0" class="observationOptionRow">
+                        <td><label style="margin-left:50px;">Observation {{i+1}} Hotkey Value</label></td>
+                        <td><input type="text" readonly="" [(ngModel)]="type.HotKey" (keydown)='onKeydown($event, i)'
+                                (change)="details.saveDetails()">
+                        </td>
+                    </tr>
+                    <tr id="observationLabelRow0" class="observationOptionRow observationLabelRow">
+                        <td>
+                            <div style="display: flex; align-items: center; margin-left: 50px;">
+                                <label style="margin-top: auto; margin-bottom: auto; ">Observation {{i+1}} Color</label>
+                                <mat-icon [ngStyle]='{"color": type.color}'>stop</mat-icon>
+                            </div>
+                        </td>
+                        <td><input type="text" [(ngModel)]="type.color" (change)="details.saveDetails()">
+                        </td>
+                    </tr>
+                    <tr id="observationRefRow0" class="observationOptionRow">
+                        <td><label style="margin-left:50px;">Observation {{i+1}} Reference Point?</label></td>
+                        <td><input type="checkbox" #referenceCheckbox [(ngModel)]="type.isReferencePoint" (change)="details.saveDetails()">
+                        </td>
+                    </tr>
+                    <tr id="observationSPRow0" class="observationOptionRow">
+                        <td><label style="margin-left:50px;">Observation {{i+1}} Single Point?</label></td>
+                        <td><input type="checkbox" [(ngModel)]="type.isSinglePoint" [disabled]="referenceCheckbox.checked" (change)="details.saveDetails()">
+                        </td>
+                    </tr>
+                </ng-container>
+
+                <tr>
+                    <td><button mat-raised-button color="primary" (click)="download()">Download</button>
+                        <button mat-raised-button color="primary" (click)="detailUpload.click()">Upload</button>
+                        <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+                    </td>
+                    <input #detailUpload type=file style="display: none;" (change)="upload($event)">
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<input type="hidden" id="SessionPage">
+<input class="d-none" type="file" id="sessionInput">

@@ -1,0 +1,37 @@
+<p>
+    <mat-toolbar>
+        <div style="display: flex; justify-content: space-around; width: 100%;">
+            <div>
+                <span>MouseNote</span>
+            </div>
+            <div></div>
+            <div>
+                <button mat-button (click)="videoInput.click()">Upload Video</button>
+                <button mat-button [matMenuTriggerFor]='dataMenu'>Data</button>
+                <mat-menu #dataMenu>
+                    <button mat-menu-item (click)="openDetailsDialog()">Details</button>
+                    <button mat-menu-item (click)="data.download()">Save Prog.</button>
+                    <button mat-menu-item (click)="uploadInput.click()">Upload Prog.</button>
+                    <button mat-menu-item (click)="data.ClearData()">Clear Prog.</button>
+                    <button mat-menu-item (click)="details.exportDataToCsv()">Export To CSV</button>
+                    <input #uploadInput type="file" style="display: none;" (change)="data.upload($event)">
+                </mat-menu>
+                <button mat-button (click)="openControlsDialog()">Player Controls</button>
+                <button mat-button (click)="openSettingsDialog()">Settings</button>
+            </div>
+        </div>
+    </mat-toolbar>
+</p>
+<div class="justify-content-between"
+    style="margin: 0; width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <app-video-player #videoPlayer [video-source]="videoSource" style="width: 100%;padding: 10px;"></app-video-player>
+    <data-info-bar [currentTime]="videoPlayer.currentTime"></data-info-bar>
+</div>
+<div style="border-top-width: 1px;border-top-style: solid; border-bottom-width: 1px;border-bottom-style: solid;">
+    <div style="width: 100%;">
+        <app-data-canvas #dataCanvas [current-time]="videoPlayer.currentTime" [duration]="videoPlayer.duration">
+        </app-data-canvas>
+    </div>
+</div>
+<!-- <button mat-raised-button color="primary" (click)="createMockData()">click</button> -->
+<input class="d-none" type="file" #videoInput accept="video/*" (change)="loadVideo($event.target)">

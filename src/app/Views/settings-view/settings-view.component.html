@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Input</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label>Default Magnification</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.defaultMagnification" type="number"
+                                        min="0.1" step="0.1" (blur)="settingsProvider.storeSettings()"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Default Timeline Zoom</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.defaultTimelineZoom" type="number"
+                                        min="0.1" step="0.1" (blur)="settingsProvider.storeSettings()"></td>
+                            <tr>
+                                <td><label>Default Speed</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.defaultSpeed" type="number" min="0.1"
+                                        step="0.1" (blur)="settingsProvider.storeSettings()"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Selected Entry Color</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.selectedEntryColor" type="text"
+                                        (blur)="settingsProvider.storeSettings()"></td>
+                            </tr>
+
+                            <tr>
+                                <td><label>Big Step Back HotKey</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.bigBackHotkey" type="text"
+                                        id="BigStepBackInput" readonly="" (blur)="settingsProvider.storeSettings()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Small Step Back HotKey</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.smallBackHotkey" type="text"
+                                        id="SmallStepBackInput" readonly="" (blur)="settingsProvider.storeSettings()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Big Step Forward HotKey</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.bigForwardHotkey" type="text"
+                                        id="BigStepForwardInput" [readonly]="false"
+                                        (blur)="settingsProvider.storeSettings()"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Small Step Forward HotKey</label></td>
+                                <td><input [(ngModel)]="settingsProvider.settings.smallForwardHotkey" type="text"
+                                        id="SmallStepForwardInput" readonly=""
+                                        (blur)="settingsProvider.storeSettings()"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><input type="hidden" id="ConfigPage">

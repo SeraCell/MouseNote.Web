@@ -1,0 +1,130 @@
+div.sideScroll {
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+#currentTime {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#laneContainer {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  overflow-y: initial;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+#lane1Container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#wideLine {
+  margin: auto;
+}
+
+#videoWindow {
+  margin: auto;
+}
+
+#rulerContainer {
+  position: relative;
+}
+
+#videoDiv {
+  margin: auto;
+  text-align: center;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.selectedGrouping {
+  background: #0000ff40;
+}
+
+tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.context-menu {
+  position: absolute;
+  text-align: center;
+  background: lightgray;
+  border: 1px solid black;
+}
+
+.context-menu ul {
+  padding: 0px;
+  margin: 0px;
+  min-width: 150px;
+  list-style: none;
+}
+
+.context-menu ul li {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  border: 1px solid black;
+}
+
+.context-menu ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.context-menu ul li:hover {
+  background: darkgray;
+}
+
+.noSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#laneContainer::-webkit-scrollbar {
+  display: none;
+}
+
+#laneVerticalContainer {
+  /*overflow-y: scroll;*/
+  overflow-x: hidden;
+}
+
+#labelDiv {
+  overflow-y: auto;
+  direction: rtl;
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

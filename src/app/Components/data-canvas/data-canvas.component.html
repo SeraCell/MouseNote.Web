@@ -1,0 +1,9 @@
+<div #canvasDiv style="width: 100%; max-height: 150px; overflow-y: auto;">
+    <canvas #canvas [width]="canvasDiv.clientWidth"
+        [height]="details.ObservationTypes.length * details.Groups.length * laneHeight" (click)="canvasClick($event)">
+    </canvas>
+</div>
+<div style="width:100%;" >
+    <canvas #timeCanvas style="margin:0;" [width]="canvasDiv.clientWidth" [height]="laneHeight">
+    </canvas>
+</div>

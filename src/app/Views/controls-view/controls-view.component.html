@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Input</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label>Video Magnification</label></td>
+                                <td><input type="number" min="0.1" step="0.1" [(ngModel)] = "playerControls.videoMagnification"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Timeline Zoom</label></td>
+                                <td><input type="number" min="0.1" step="0.1" [(ngModel)] = "playerControls.timelineZoom"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Speed</label></td>
+                                <td><input type="number" min="0.1" step="0.1" [(ngModel)] = "playerControls.videoSpeed"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><input type="hidden" id="SettingsPage">

@@ -1,0 +1,25 @@
+<div id="videoDiv">
+    <video #videoWindow [src]="videoSource" crossOrigin="anonymous" [width]="playerControls.magnifiedWidth"
+        [playbackRate]="playerControls.videoSpeed" (canplay)="videoLoaded($event)" (timeupdate)="setCurrentTime()"
+        style="min-height: 50vh;">
+    </video>
+</div>
+<div style="width: 100%;">
+    <input class="custom-range" type="range" id="scannerInput" style="width: 100%;" [(ngModel)]="currentTime" min="0"
+        [max]="videoWindow.duration" step=".01" (ngModelChange)="sliderMoved()">
+</div>
+<div class="d-flex justify-content-center" id="timeDiv">
+    <div>
+        <label>Time:&nbsp;</label>
+        <label id="time">{{currentTime | timeElapsed:videoWindow.duration}}&nbsp;</label>
+    </div>
+</div>
+<div class="d-flex justify-content-center" id="controlDiv">
+    <button mat-raised-button color="primary" title="-0.10s" (click)="settingsProvider.bigStepBackwardEvent.emit()">&lt;&lt;</button>
+    <button mat-raised-button color="primary" title="-0.02s" (click)="settingsProvider.smallStepBackwardEvent.emit()">&lt;</button>
+    <button mat-raised-button [color]="videoWindow.paused?'accent':'warn'" (click)="togglePlay()">
+        <mat-icon>{{videoWindow.paused?"play_arrow": "pause"}}</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" title="+0.02s" (click)="settingsProvider.smallStepForwardEvent.emit()">&gt;</button>
+    <button mat-raised-button color="primary" title="+0.10s" (click)="settingsProvider.bigStepForwardEvent.emit()">&gt;&gt;</button>
+</div>

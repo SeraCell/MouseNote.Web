@@ -1,0 +1,21 @@
+<div
+    style="margin-top: 5px;margin-bottom: 5px; display: flex; justify-content: center; align-items: center;padding: 1em; height: 5em;">
+    <label *ngIf="data.activeDataIndex == -1; else dataRow" style="margin: 0, auto;">
+        Select interval to edit
+    </label>
+
+
+    <!-- <div *ngIf="data.activeDataIndex != -1" class="d-none justify-content-center align-items-xl-center" style="margin-top: 5px;margin-bottom: 5px;"> -->
+    <ng-template #dataRow>
+        <!-- <div class="col"><label class="col-form-label" style="width: 150px;">Select time to edit</label></div> -->
+        <label>Start: {{data.timeEntries[data.activeDataIndex].start|number:'1.3-3'}}</label>
+        <mat-icon>arrow_right</mat-icon>
+        <label>End: {{data.timeEntries[data.activeDataIndex].end|number:'1.3-3'}}</label>
+        <button mat-raised-button color="accent" (click)="adjustStart()"
+            [disabled]="data.timeEntries[data.activeDataIndex].end < currentTime">Adj. Start</button>
+        <button mat-raised-button color="accent" (click)="adjustEnd()"
+            [disabled]="data.timeEntries[data.activeDataIndex].start > currentTime">Adj. End</button>
+        <button mat-raised-button color="primary" (click)="data.activeDataIndex=-1">Done</button>
+        <button mat-raised-button color="warn" (click)="data.deleteActiveEntry()">Delete</button>
+    </ng-template>
+</div>
